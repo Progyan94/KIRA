@@ -1,0 +1,1037 @@
+/* Component Styles for KIRA — Psychological Warfare Simulator */
+@import './variables.css';
+
+/* ==========================================================================
+   1. MAIN SCREEN / TITLE SEQUENCE
+   ========================================================================== */
+.main-screen-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl);
+  overflow-y: auto;
+}
+
+.main-screen-inner {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInSlow 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-system-status {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.22em;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.main-title-lockup {
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.main-title-subheading {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--accent-red);
+  letter-spacing: 0.35em;
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-family: var(--font-display);
+  font-size: 84px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 0.95;
+  letter-spacing: 0.14em;
+  margin: var(--space-xs) 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+}
+
+.main-subtitle {
+  font-family: var(--font-interface);
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: var(--space-xs);
+}
+
+.main-supporting-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: var(--space-lg) 0 var(--space-2xl) 0;
+  position: relative;
+  padding: 0 var(--space-md);
+}
+
+.main-supporting-quote::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent-red-muted);
+}
+
+.main-supporting-quote::after {
+  content: "—";
+  position: absolute;
+  right: 0;
+  color: var(--accent-red-muted);
+}
+
+.main-menu-actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  gap: var(--space-sm);
+}
+
+.main-menu-btn {
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-menu-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.main-menu-btn:hover:not(:disabled)::before {
+  background: var(--accent-red);
+}
+
+.main-menu-btn.primary-btn {
+  border-color: var(--accent-red-muted);
+  background: var(--surface-elevated);
+}
+
+.main-menu-btn.primary-btn:hover:not(:disabled) {
+  border-color: var(--accent-red);
+  background: var(--accent-red-dim);
+}
+
+.main-screen-footer {
+  margin-top: var(--space-2xl);
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* ==========================================================================
+   2. APP HEADER & SYSTEM STATUS BAR
+   ========================================================================== */
+.app-header {
+  position: relative;
+  z-index: 20;
+  height: var(--header-height);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header-case-seal {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--accent-red);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.header-case-title {
+  font-family: var(--font-interface);
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.header-metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-elevated);
+  padding: 3px 8px;
+  border: 1px solid var(--border-muted);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.header-btn {
+  font-size: 11px;
+  padding: 5px 10px;
+  letter-spacing: 0.1em;
+  border-color: var(--border-muted);
+}
+
+/* ==========================================================================
+   3. GAMEPLAY SCREEN LAYOUT
+   ========================================================================== */
+.gameplay-layout {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 290px 1fr 320px;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  height: calc(100vh - var(--header-height));
+}
+
+/* Responsive mode tabs for tablets / mobile */
+.gameplay-mobile-nav {
+  display: none;
+}
+
+/* ==========================================================================
+   4. LEFT REGION — PLAYER CONTEXT
+   ========================================================================== */
+.player-context-panel {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: var(--space-md);
+  gap: var(--space-lg);
+}
+
+.panel-section-title {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-muted);
+  padding-bottom: 4px;
+}
+
+.context-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.context-label {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.context-value {
+  font-family: var(--font-interface);
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.context-facts-list,
+.context-resources-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fact-item {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: var(--space-sm);
+  position: relative;
+}
+
+.fact-item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--border-light);
+}
+
+.resource-pill {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resource-code {
+  color: var(--accent-red);
+}
+
+.relation-item {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.relation-name {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.relation-status {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.relation-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. CENTER REGION — LIVE NARRATIVE (DOMINANT)
+   ========================================================================== */
+.live-narrative-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  overflow-y: auto;
+  padding: var(--space-lg) var(--space-xl);
+  scroll-behavior: smooth;
+}
+
+.narrative-stream {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: var(--space-xl);
+}
+
+.narrative-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  animation: entryFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes entryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.entry-header {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-transform: uppercase;
+}
+
+.entry-header.speaker-header {
+  color: var(--text-secondary);
+}
+
+.entry-header.speaker-you {
+  color: var(--accent-red);
+}
+
+/* Entry Types */
+.entry-narrative .entry-body {
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.entry-dialogue {
+  background: var(--surface);
+  border-left: 2px solid var(--border-light);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.entry-dialogue .entry-body {
+  font-family: var(--font-interface);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.entry-observation {
+  background: rgba(32, 32, 32, 0.4);
+  border-left: 2px solid var(--accent-red-muted);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.entry-observation .entry-body {
+  font-family: var(--font-interface);
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.entry-action_echo {
+  background: rgba(141, 37, 41, 0.08);
+  border-left: 2px solid var(--accent-red);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.entry-action_echo .entry-body {
+  font-family: var(--font-interface);
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.entry-incident {
+  background: var(--surface-elevated);
+  border: 1px solid var(--accent-red-muted);
+  padding: var(--space-md);
+}
+
+.entry-incident .entry-body {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   6. RIGHT REGION — INVESTIGATION RECORD & NOTEBOOK
+   ========================================================================== */
+.investigation-record-panel {
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.record-panel-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-elevated);
+}
+
+.record-tab-btn {
+  flex: 1;
+  font-family: var(--font-technical);
+  font-size: 10px;
+  padding: 10px 4px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  background: transparent;
+  letter-spacing: 0.1em;
+}
+
+.record-tab-btn.active {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-red);
+  background: var(--surface);
+}
+
+.record-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Evidence Cards */
+.evidence-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.evidence-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--accent-red);
+}
+
+.evidence-title {
+  font-family: var(--font-interface);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.evidence-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.evidence-meta {
+  font-family: var(--font-technical);
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Timeline Cards */
+.timeline-card {
+  border-left: 1px solid var(--border);
+  padding-left: var(--space-sm);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--space-sm);
+}
+
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 4px;
+  width: 7px;
+  height: 7px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+}
+
+.timeline-card.critical::before {
+  border-color: var(--accent-red);
+  background: var(--accent-red);
+}
+
+.timeline-time {
+  font-family: var(--font-technical);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.timeline-label {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.timeline-summary {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Player Personal Deduction Notebook / Scratchpad */
+.scratchpad-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--space-xs);
+}
+
+.scratchpad-intro {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.scratchpad-textarea {
+  flex: 1;
+  width: 100%;
+  resize: none;
+  font-family: var(--font-technical);
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.scratchpad-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   7. BOTTOM REGION — PLAYER ACTION INPUT
+   ========================================================================== */
+.player-action-region {
+  grid-column: 1 / -1;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  z-index: 15;
+}
+
+.tactical-chips-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tactical-chip-label {
+  font-family: var(--font-technical);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tactical-chip {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.tactical-chip:hover {
+  border-color: var(--accent-red-muted);
+  color: var(--text-primary);
+  background: var(--surface-muted);
+}
+
+.action-input-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+.action-textarea-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.action-textarea {
+  width: 100%;
+  height: 60px;
+  resize: none;
+  font-family: var(--font-interface);
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  color: var(--text-primary);
+}
+
+.action-textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.action-submit-btn {
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-technical);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.action-submit-btn:hover:not(:disabled) {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #FFFFFF;
+}
+
+.action-submit-subtext {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.action-submit-btn:hover:not(:disabled) .action-submit-subtext {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   8. MODALS & DEBRIEF SYSTEM
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 4, 0.88);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-elevated);
+}
+
+.modal-title-lockup {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-label {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--accent-red);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.modal-close-btn {
+  border: none;
+  font-size: 16px;
+  padding: 4px 8px;
+  color: var(--text-muted);
+}
+
+.modal-body {
+  padding: var(--space-lg);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.modal-footer {
+  padding: var(--space-sm) var(--space-lg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  background: var(--surface-elevated);
+}
+
+/* Debrief Specific Styles */
+.debrief-verdict-banner {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
+.debrief-verdict-banner.flawless {
+  border-color: #2D6A4F;
+  background: rgba(45, 106, 79, 0.12);
+}
+
+.debrief-verdict-banner.critical {
+  border-color: var(--accent-red);
+  background: rgba(141, 37, 41, 0.15);
+}
+
+.verdict-tag {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--accent-red);
+}
+
+.verdict-heading {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+}
+
+.verdict-summary {
+  font-family: var(--font-interface);
+  font-size: 13px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.debrief-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.debrief-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.debrief-card-title {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--accent-red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.debrief-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.debrief-list-item {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  padding-left: var(--space-sm);
+  position: relative;
+}
+
+.debrief-list-item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--border);
+}
+
+/* Timeline Comparison Table */
+.timeline-reconstruction-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.timeline-reconstruction-table th,
+.timeline-reconstruction-table td {
+  border: 1px solid var(--border-muted);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.timeline-reconstruction-table th {
+  background: var(--surface-muted);
+  font-family: var(--font-technical);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.timeline-reconstruction-table td {
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Decoy / Clue Audit Table */
+.clue-badge {
+  font-family: var(--font-technical);
+  font-size: 9px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  border: 1px solid var(--border-muted);
+}
+
+.clue-badge.genuine {
+  color: #70A288;
+  border-color: #2D6A4F;
+}
+
+.clue-badge.deliberately_staged {
+  color: #E07A5F;
+  border-color: var(--accent-red);
+}
+
+.clue-badge.misleading {
+  color: #E9C46A;
+  border-color: #9C7A28;
+}
+
+.clue-badge.unrelated {
+  color: var(--text-muted);
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .gameplay-layout {
+    grid-template-columns: 240px 1fr;
+  }
+  .investigation-record-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .gameplay-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .player-context-panel {
+    display: none;
+  }
+  .investigation-record-panel {
+    display: none;
+  }
+  .main-title {
+    font-size: 54px;
+  }
+  .debrief-columns {
+    grid-template-columns: 1fr;
+  }
+  .action-input-row {
+    flex-direction: column;
+  }
+  .action-submit-btn {
+    width: 100%;
+    padding: 10px;
+  }
+}
